@@ -4,8 +4,11 @@ import { IProfile } from "../profile/types";
 
 // fetch users via the server
 export function getUsers(): Promise<User[]> {
-  return axios.get('http://localhost:3000/profiles') // return axios.get('http://localhost:3000/profile')
-    .then(resp => {
+  return axios.get('http://localhost:3000/profiles', // return axios.get('http://localhost:3000/profile')
+  {
+    withCredentials: true
+  })
+  .then(resp => {
       return resp.data
     })
 }
@@ -20,7 +23,8 @@ export function login(email: string, password: string): Promise<IProfile>{
         },
         {
             withCredentials: true
-        })
+        }
+        )
       .then(resp => resp.data) 
     }
 
