@@ -5,10 +5,13 @@ import history from '../../history';
 import { Alert } from '@material-ui/lab';
 import { defaultFormField, defaultPasswordField, IProfileFormFields } from '../../utils/types';
 import IdentitySection from './IdentitySection';
-import { validateRequiredField } from '../../utils/validateRequiredField';
+//import { validateRequiredField } from '../../utils/validateRequiredField';
 import CredentialsSection from './CredentialsSection';
-import ProfileFormCheck from './ProfileFormCheck';
+// import ProfileFormCheck from './ProfileFormCheck';
 import { validateEmailField } from '../utils/validateEmailField';
+import { validateNameField } from '../utils/validateNameField';
+import { validatePasswordField } from '../utils/validatePasswordField';
+import PasswordChecks from './PasswordChecks';
 
 export interface IRegistrationFormState {
   status: 'ready' | 'success' | 'error';
@@ -43,7 +46,7 @@ class RegistrationForm extends React.Component<{}, IRegistrationFormState> {
         const newState = {
         fields: {
           ...this.state.fields,
-          [field]: { value: value }
+          [field]: { ...this.state.fields[field], value: value }
         }
       };
             // checking fiels conditions
@@ -54,15 +57,15 @@ class RegistrationForm extends React.Component<{}, IRegistrationFormState> {
                   break;
                 case 'firstname':
                   const { firstname } = newState.fields;
-                  //validateFirstnameField(email);
+                  validateNameField(firstname);
                   break;
                 case 'lastname':
                   const { lastname } = newState.fields;
-                  //validateLastnameField(email);
+                  validateNameField(lastname);
                   break;
                 case 'password' || 'confirmation':
                   const { password, confirmation } = newState.fields;
-                  //validatePasswordField(password, confirmation);
+                  validatePasswordField(password, confirmation);
                   break;
               }
               this.setState(newState);
@@ -100,7 +103,7 @@ class RegistrationForm extends React.Component<{}, IRegistrationFormState> {
                   changePassword={this.changeField("password")}
                   changeConfirmation={this.changeField("confirmation")}
                 />
-                <ProfileFormCheck check={email.isValid} />
+                <PasswordChecks password={password} />
               </Grid>
             </Grid>
           </Box>
