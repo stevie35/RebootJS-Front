@@ -3,10 +3,11 @@ import './App.css';
 // import MyContacts from './users/components/MyContacts';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 //import { blue, yellow } from '@material-ui/core/colors';
-import AppContent from './layout/AppContent';
+//import AppContent from './layout/AppContent';
 import { Router } from 'react-router-dom';
 import history from './history';
-import AppMenu from './layout/AppMenu';
+//import AppMenu from './layout/AppMenu';
+import AppLayout from './layout/AppLayout';
 
 const theme = createMuiTheme({
     palette: {
@@ -25,8 +26,7 @@ function App() {
   return (
     <Router history={history}>
       <ThemeProvider theme={theme}>
-        <AppMenu />
-        <AppContent />
+        <AppLayout />
       </ThemeProvider>
     </Router>
   );
