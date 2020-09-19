@@ -2,11 +2,11 @@ import { Box, createStyles, Drawer, IconButton, Theme, withStyles } from '@mater
 import { ArrowBackIos } from '@material-ui/icons';
 import React from 'react';
 // import { getUsers } from '../api/methods';
-import ConversationList from '../conversations/components/ConversationList';
-import ContactList from '../users/components/ContactList';
-import { User } from '../users/types';
-import { IDrawerContent } from './types';
-import { IConversation } from '../conversations/types';
+import ConversationList from '../../conversations/components/ConversationList';
+import ContactList from '../../users/components/ContactList';
+import { User } from '../../users/types';
+import { IDrawerContent } from '../types';
+import { IConversation } from '../../conversations/types';
 
 interface AppDrawerProps {
   showDrawer: boolean;
