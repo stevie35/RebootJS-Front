@@ -8,6 +8,8 @@ import { Router } from 'react-router-dom';
 import history from './history';
 //import AppMenu from './layout/AppMenu';
 import AppLayout from './layout/AppLayout';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const theme = createMuiTheme({
     palette: {
@@ -24,11 +26,13 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <AppLayout />
-      </ThemeProvider>
-    </Router>
+    <Provider store={store}>
+      <Router history={history}>
+        <ThemeProvider theme={theme}>
+          <AppLayout />
+        </ThemeProvider>
+      </Router>
+    </Provider>
   );
 }
 
