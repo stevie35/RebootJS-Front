@@ -10,13 +10,13 @@ import { User } from '../../users/types';
 import { changeDrawerContent } from '../actions/changeDrawerContentAction';
 import { IDrawerContent } from '../types';
 import { IConversation } from '../../conversations/types';
+// import { makeFetchUsers } from '../../profile/actions/makeFetchUsers';
 
 interface AppDrawerProps {
   showDrawer: boolean;
   drawerContent?: IDrawerContent;
   hideDrawer: () => void;
   classes: any;
-  users: User[];
   connectedUser?: User;
   conversations: IConversation[];
 }
@@ -41,10 +41,9 @@ const styles = (theme: Theme) => createStyles({
 
   class AppDrawer extends React.Component<AppDrawerProps>{
   render(){
-    const { users } = this.props;
     const content = this.props.drawerContent === 'contacts' ?
-    <ContactList connectedUser={this.props.connectedUser} users={users}/>
-    : <ConversationList conversations={this.props.conversations} users={users}/>
+    <ContactList connectedUser={this.props.connectedUser} />
+    : <ConversationList conversations={this.props.conversations} />
     return this.props.showDrawer ?
       <Drawer
         variant="persistent"
