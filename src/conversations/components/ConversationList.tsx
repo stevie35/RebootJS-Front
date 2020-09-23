@@ -4,6 +4,8 @@ import React from 'react';
 // import { User } from '../../users/types';
 import { IConversation } from '../types';
 import ConversationListItem from './ConversationListItem';
+import { IAppState } from '../../appReducer';
+import { connect } from 'react-redux';
 
 interface ConversationListProps {
   conversations: IConversation[];
@@ -19,4 +21,7 @@ class ConversationList extends React.Component<ConversationListProps>{
   }
 }
 
-export default ConversationList;
+const mapStateToProps = ({conversation} : IAppState) => ({
+  conversations: conversation.list
+})
+export default connect(mapStateToProps)(ConversationList);

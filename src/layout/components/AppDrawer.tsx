@@ -9,7 +9,7 @@ import ContactList from '../../users/components/ContactList';
 // import { User } from '../../users/types';
 import { changeDrawerContent } from '../actions/changeDrawerContentAction';
 import { IDrawerContent } from '../types';
-import { IConversation } from '../../conversations/types';
+// import { IConversation } from '../../conversations/types';
 // import { makeFetchUsers } from '../../profile/actions/makeFetchUsers';
 
 interface AppDrawerProps {
@@ -17,7 +17,6 @@ interface AppDrawerProps {
   drawerContent?: IDrawerContent;
   hideDrawer: () => void;
   classes: any;
-  conversations: IConversation[];
 }
 
 const styles = (theme: Theme) => createStyles({
@@ -42,7 +41,7 @@ const styles = (theme: Theme) => createStyles({
   render(){
     const content = this.props.drawerContent === 'contacts' ?
     <ContactList />
-    : <ConversationList conversations={this.props.conversations} />
+    : <ConversationList />
     return this.props.showDrawer ?
       <Drawer
         variant="persistent"
