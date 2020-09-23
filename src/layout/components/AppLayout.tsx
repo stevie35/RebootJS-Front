@@ -92,12 +92,10 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState>{
         <AppMenu />
         <AppContent
           conversations={this.state.conversations}
-          connectedUser={this.state.profile}
         />
       </div>
       <AppDrawer
         conversations={this.state.conversations}
-        connectedUser={this.state.profile}
       />
     </Fragment>
   }
